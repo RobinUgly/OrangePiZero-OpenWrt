@@ -1,0 +1,30 @@
+//基于Ubuntu16.06TLS
+
+//更新系统
+sudo apt-get update
+//下载基础环境
+sudo apt-get install build-essential asciidoc binutils bzip2 gawk gettext git libncurses5-dev libz-dev patch unzip zlib1g-dev lib32gcc1 libc6-dev-i386 subversion flex uglifyjs git-core gcc-multilib p7zip p7zip-full msmtp libssl-dev texinfo libglib2.0-dev
+//下载源码
+openwrt源码：    git clone https://git.openwrt.org/openwrt/openwrt.git/
+
+lean大佬：git clone https://github.com/coolsnowwolf/lede 
+
+//进入工作目录lede（修改）
+cd lede 
+
+//更新软件包 （feeds都是一些插件）
+./scripts/feeds update -a && ./scripts/feeds install -a
+
+//测试编译环境：
+make defconfig
+
+//配置固件菜单：
+make menuconfig
+
+
+//dl库
+make download V=s
+
+
+//二次编译清楚信息
+rm -f .config && rm -f .config.old
